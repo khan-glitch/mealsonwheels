@@ -1,0 +1,13 @@
+# Composer dependencies
+/vendor
+
+# Node.js dependencies
+/node_modules
+
+# Laravel specific
+/public/build
+/public/hot
+/storage/*.key
+
+# Environment file
+.env
