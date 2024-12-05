@@ -33,7 +33,7 @@
         <!-- Age (for Member and Volunteer roles) -->
         <div class="mt-4" id="age-field" style="display: none;">
             <x-input-label for="age" :value="__('Age')" />
-            <x-text-input id="age" class="block mt-1 w-full" type="number" name="age" :value="old('age')"  />
+            <x-text-input id="age" class="block mt-1 w-full" type="number" name="age" :value="old('age')" />
             <x-input-error :messages="$errors->get('age')" class="mt-2" />
         </div>
 
@@ -48,7 +48,7 @@
         <div class="mt-4">
             <x-input-label for="role" :value="__('Role')" />
             <select id="role" name="role" class="block mt-1 w-full" required>
-                <option value="member">Member</option>
+                <option value="member" selected>Member</option>
                 <option value="caregiver">Caregiver</option>
                 <option value="volunteer">Volunteer</option>
                 <option value="partner">Partner</option>
@@ -84,40 +84,35 @@
 </x-guest-layout>
 
 <script>
-    // Show/Hide age, disability and location fields based on the selected role
-    document.getElementById('role').addEventListener('change', function() {
+    // Function to update the form fields based on role
+    function updateFormFields(role) {
         var ageField = document.getElementById('age-field');
         var disabilityField = document.getElementById('disability-field');
         var locationField = document.getElementById('location-field');
-        var role = this.value;
 
-        // Show/Hide fields based on role
-        if (role === 'member') {
-            ageField.style.display = 'block';
-            disabilityField.style.display = 'block';  // Show disability field for Members
-        } else if (role === 'volunteer') {
-            ageField.style.display = 'block';
-            disabilityField.style.display = 'none';  // Hide disability field for Volunteers
-        } else {
-            ageField.style.display = 'none';
-            disabilityField.style.display = 'none';
-        }
-
-        if (role === 'admin') {
-            locationField.style.display = 'none';
-        } else {
-            locationField.style.display = 'block';
-        }
-
-        // Additional logic for age validation
-        var ageInput = document.getElementById('age');
-        ageInput.removeAttribute('min');
-        ageInput.removeAttribute('max');
+        // Default visibility
+        ageField.style.display = 'none';
+        disabilityField.style.display = 'none';
+        locationField.style.display = 'block';
 
         if (role === 'member') {
-            ageInput.setAttribute('min', 45); // Members must be over 45
+            ageField.style.display = 'block';
+            disabilityField.style.display = 'block'; // Members need the disability field
         } else if (role === 'volunteer') {
-            ageInput.setAttribute('max', 40); // Volunteers must be under 40
+            ageField.style.display = 'block';
+        } else if (role === 'admin') {
+            locationField.style.display = 'none'; // Admins do not need location
         }
+    }
+
+    // Initialize form fields on page load
+    document.addEventListener('DOMContentLoaded', function () {
+        var role = document.getElementById('role').value;
+        updateFormFields(role);
+    });
+
+    // Update form fields when role changes
+    document.getElementById('role').addEventListener('change', function () {
+        updateFormFields(this.value);
     });
 </script>
