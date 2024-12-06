@@ -215,7 +215,7 @@ footer a:hover {
                                 <a class="nav-link active" href="#">Home</a>
                             </li>
                             <li class="nav-item">
-                                <a class="nav-link" href="#donate">Donate</a>
+                                <a class="nav-link" href="/donor">Donate</a>
                             </li>
                             <li class="nav-item">
                                 <a class="nav-link" href="#meals">Meals</a>
@@ -255,7 +255,7 @@ footer a:hover {
     <section class="hero">
         <h1>Delivering Hope, One Meal at a Time</h1>
         <p>Join us in making a difference. Every meal counts!</p>
-        <a href="#donate">Donate Now</a>
+        <a href="/donor">Donate Now</a>
     </section>
 
     <!-- Main Content -->

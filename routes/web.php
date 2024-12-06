@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\ProfileController;
+use App\Http\Controllers\DonationController;
 use App\Http\Controllers\MemberDashboardController;
 use App\Http\Controllers\CaregiverDashboardController;
 use App\Http\Controllers\VolunteerDashboardController;
@@ -17,6 +18,12 @@ Route::get('/', function () {
 Route::get('/dashboard', function () {
     return view('dashboard');
 })->middleware(['auth', 'verified'])->name('dashboard');
+
+//make donations
+Route::get('/donor', [DonationController::class, 'index'])->name('donor.index');
+    Route::get('/donor/payment/{method}', [DonationController::class, 'paymentForm'])->name('donor.payment');
+    Route::post('/donor/donate', [DonationController::class, 'store'])->name('donor.store');
+    Route::get('/payment/success', [DonationController::class, 'paymentSuccess'])->name('payment.success');
 
 // Role-based Dashboards
 Route::middleware(['auth', 'verified'])->group(function () {
