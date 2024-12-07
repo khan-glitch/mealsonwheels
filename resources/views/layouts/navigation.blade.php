@@ -33,6 +33,24 @@
                     <x-nav-link :href="url('/contact')" :active="request()->is('contact')">
                         {{ __('Contact Us') }}
                     </x-nav-link>
+
+                    <!-- Dashboard Link -->
+                    @if (Auth::check())
+                        @php
+                            $role = Auth::user()->role; // Assuming 'role' field exists in the users table
+                            $dashboardRoute = match($role) {
+                                'member' => route('member.dashboard'),
+                                'caregiver' => route('caregiver.dashboard'),
+                                'volunteer' => route('volunteer.dashboard'),
+                                'partner' => route('partner.dashboard'),
+                                'admin' => route('admin.dashboard'),
+                                default => '#', // Fallback if role is undefined
+                            };
+                        @endphp
+                        <x-nav-link :href="$dashboardRoute">
+                            {{ __('Dashboard') }}
+                        </x-nav-link>
+                    @endif
                 </div>
             </div>
 
@@ -52,7 +70,6 @@
 
                     <x-slot name="content">
                         @if (Auth::check())
-                            <!-- Display Profile and Logout if logged in -->
                             <x-dropdown-link :href="route('profile.edit')">
                                 {{ __('Profile') }}
                             </x-dropdown-link>
@@ -63,7 +80,6 @@
                                 </x-dropdown-link>
                             </form>
                         @else
-                            <!-- Display Login and Register if not logged in -->
                             <x-dropdown-link :href="route('login')">
                                 {{ __('Login') }}
                             </x-dropdown-link>
@@ -83,59 +99,6 @@
                         <path :class="{'hidden': ! open, 'inline-flex': open }" class="hidden" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12" />
                     </svg>
                 </button>
-            </div>
-        </div>
-    </div>
-
-    <!-- Responsive Navigation Menu -->
-    <div :class="{'block': open, 'hidden': ! open}" class="hidden sm:hidden">
-        <div class="pt-2 pb-3 space-y-1">
-            <x-responsive-nav-link :href="url('/')" :active="request()->is('/')">
-                {{ __('Home') }}
-            </x-responsive-nav-link>
-            <x-responsive-nav-link :href="url('/donor')" :active="request()->is('donor')">
-                {{ __('Donate') }}
-            </x-responsive-nav-link>
-            <x-responsive-nav-link :href="url('/meals')" :active="request()->is('meals')">
-                {{ __('Meals') }}
-            </x-responsive-nav-link>
-            <x-responsive-nav-link :href="url('/about')" :active="request()->is('about')">
-                {{ __('About Us') }}
-            </x-responsive-nav-link>
-            <x-responsive-nav-link :href="url('/contact')" :active="request()->is('contact')">
-                {{ __('Contact Us') }}
-            </x-responsive-nav-link>
-        </div>
-
-        <!-- Responsive Settings Options -->
-        <div class="pt-4 pb-1 border-t border-gray-200">
-            <div class="px-4">
-                <div class="font-medium text-base text-gray-800">
-                    {{ Auth::check() ? Auth::user()->name : 'Guest' }}
-                </div>
-                <div class="font-medium text-sm text-gray-500">
-                    {{ Auth::check() ? Auth::user()->email : '' }}
-                </div>
-            </div>
-            <div class="mt-3 space-y-1">
-                @if (Auth::check())
-                    <x-responsive-nav-link :href="route('profile.edit')">
-                        {{ __('Profile') }}
-                    </x-responsive-nav-link>
-                    <form method="POST" action="{{ route('logout') }}">
-                        @csrf
-                        <x-responsive-nav-link :href="route('logout')" onclick="event.preventDefault(); this.closest('form').submit();">
-                            {{ __('Log Out') }}
-                        </x-responsive-nav-link>
-                    </form>
-                @else
-                    <x-responsive-nav-link :href="route('login')">
-                        {{ __('Login') }}
-                    </x-responsive-nav-link>
-                    <x-responsive-nav-link :href="route('register')">
-                        {{ __('Register') }}
-                    </x-responsive-nav-link>
-                @endif
             </div>
         </div>
     </div>
