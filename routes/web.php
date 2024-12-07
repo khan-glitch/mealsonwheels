@@ -17,7 +17,7 @@ Route::get('/', function () {
 
 // General Dashboard (Fallback)
 Route::get('/dashboard', function () {
-    return view('dashboard');
+    return view('welcome'); // Point to the updated view path
 })->middleware(['auth', 'verified'])->name('dashboard');
 
 //make donations
