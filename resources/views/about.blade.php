@@ -13,11 +13,11 @@
                     MerryMeal began with a simple vision: to bring comfort and nourishment to those who need it most. What started as a small community effort has grown into a nationwide initiative, reaching countless individuals who struggle with meal preparation due to age, illness, or disability. Our journey has been shaped by the collective power of compassion and the unwavering support of our volunteers, partners, and donors.
                     </p>
                     <p style="margin-bottom: 1rem;">
-                        Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+                    Over the years, we have partnered with local food service providers and dedicated volunteers to ensure that no one is left behind. By leveraging technology and a network of kitchens, we deliver meals efficiently, even to those in remote areas. Each meal represents not just sustenance but a reminder that someone cares.
                     </p>
                     <h3 style="font-size: 1.25rem; font-weight: bold; margin-top: 1.5rem; margin-bottom: 0.5rem;">Our Mission</h3>
                     <p>
-                    Over the years, we have partnered with local food service providers and dedicated volunteers to ensure that no one is left behind. By leveraging technology and a network of kitchens, we deliver meals efficiently, even to those in remote areas. Each meal represents not just sustenance but a reminder that someone cares.
+                    Our mission is to ensure that every individual, regardless of their circumstances, has access to nutritious meals that promote their health and well-being. Through collaboration with food service providers, donors, and community volunteers, we strive to create a supportive ecosystem that fosters dignity and independence for all our members.
                     </p>
                 </div>
 
