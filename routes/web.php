@@ -9,6 +9,8 @@ use App\Http\Controllers\PartnerDashboardController;
 use App\Http\Controllers\AdminDashboardController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\OrderController;
+use App\Http\Controllers\ContactController;
+use App\Http\Controllers\PageController;
 
 // Welcome Page
 Route::get('/', function () {
@@ -62,3 +64,7 @@ Route::middleware(['auth'])->group(function () {
 
 // Authentication Routes
 require __DIR__.'/auth.php';
+
+Route::get('/contact', [ContactController::class, 'index'])->name('contact');
+
+Route::get('/about', [PageController::class, 'about'])->name('about');
