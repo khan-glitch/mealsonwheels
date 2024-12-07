@@ -30,9 +30,10 @@ class AuthenticatedSessionController extends Controller
         // Regenerate the session
         $request->session()->regenerate();
 
-        // Redirect based on role
+        // Get the user and redirect based on their role
         $user = Auth::user();
-        return redirect()->intended($this->redirectTo($user->role));
+
+        return $this->redirectTo($user->role);
     }
 
     /**
@@ -50,23 +51,23 @@ class AuthenticatedSessionController extends Controller
     }
 
     /**
-     * Determine the redirection route based on user role.
+     * Determine the redirection route based on the user's role.
      */
-    protected function redirectTo(string $role): string
+    protected function redirectTo(string $role): RedirectResponse
     {
         switch ($role) {
             case 'member':
-                return route('member.dashboard');
+                return redirect()->route('member.dashboard');
             case 'caregiver':
-                return route('caregiver.dashboard');
+                return redirect()->route('caregiver.dashboard');
             case 'volunteer':
-                return route('volunteer.dashboard');
+                return redirect()->route('volunteer.dashboard');
             case 'partner':
-                return route('partner.dashboard');
+                return redirect()->route('partner.dashboard');
             case 'admin':
-                return route('admin.dashboard');
+                return redirect()->route('admin.dashboard');
             default:
-                return route('dashboard');
+                return redirect()->route('dashboard');
         }
     }
 }

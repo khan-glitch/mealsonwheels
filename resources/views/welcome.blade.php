@@ -12,7 +12,7 @@
     <!-- Bootstrap CSS -->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
 
-    <style>
+<style>
 body {
     font-family: "Roboto", sans-serif;
     margin: 0;
@@ -192,64 +192,12 @@ footer a {
 footer a:hover {
     text-decoration: underline;
 }
+</style>
 
-    </style>
 </head>
 <body>
+    @include('layouts.navigation')
 
-        <!-- Navbar with Offcanvas -->
-        <nav class="navbar navbar-dark bg-dark fixed-top">
-            <div class="container-fluid">
-                <a class="navbar-brand" href="#">Meals on Wheels</a>
-                <button class="navbar-toggler" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasDarkNavbar" aria-controls="offcanvasDarkNavbar" aria-label="Toggle navigation">
-                    <span class="navbar-toggler-icon"></span>
-                </button>
-                <div class="offcanvas offcanvas-end text-bg-dark" tabindex="-1" id="offcanvasDarkNavbar" aria-labelledby="offcanvasDarkNavbarLabel">
-                    <div class="offcanvas-header">
-                        <h5 class="offcanvas-title" id="offcanvasDarkNavbarLabel">Meals on Wheels Menu</h5>
-                        <button type="button" class="btn-close btn-close-white" data-bs-dismiss="offcanvas" aria-label="Close"></button>
-                    </div>
-                    <div class="offcanvas-body">
-                        <ul class="navbar-nav justify-content-end flex-grow-1 pe-3">
-                            <li class="nav-item">
-                                <a class="nav-link active" href="#">Home</a>
-                            </li>
-                            <li class="nav-item">
-                                <a class="nav-link" href="/donor">Donate</a>
-                            </li>
-                            <li class="nav-item">
-                                <a class="nav-link" href="#meals">Meals</a>
-                            </li>
-                            <li class="nav-item">
-                                <a class="nav-link" href="#about">About Us</a>
-                            </li>
-                            <li class="nav-item">
-                                <a class="nav-link" href="#contact">Contact Us</a>
-                            </li>
-                            @auth
-                                <li class="nav-item">
-                                    <a class="nav-link" href="/dashboard">Dashboard</a>
-                                </li>
-                                <form method="POST" action="{{ route('logout') }}" style="display: inline;">
-                                    @csrf
-                                    <button type="submit" class="logout-btn" style="background: none; border: none; color: #ffffff; text-decoration: none; cursor: pointer; font-size: 16px;">
-                                        {{ __('Log Out') }}
-                                    </button>
-                                </form>
-                            @else
-                                <li class="nav-item">
-                                    <a class="nav-link" href="/login">Log In</a>
-                                </li>
-                                <li class="nav-item">
-                                    <a class="nav-link" href="/register">Register</a>
-                                </li>
-                            @endauth
-                        </ul>
-
-                    </div>
-                </div>
-            </div>
-        </nav>
 
     <!-- Hero Section -->
     <section class="hero">
@@ -277,7 +225,7 @@ footer a:hover {
                     <p>Join our community and make a difference by supporting our mission.</p>
                 </div>
             </div>
-            <a href="/register" class="card-button">Learn More</a>
+            <a href="/register" class="card-button">Register</a>
         </div>
 
         <!-- Card 2 -->
@@ -289,7 +237,7 @@ footer a:hover {
                     <p>Enjoy nutritious and freshly prepared meals delivered to your doorstep.</p>
                 </div>
             </div>
-            <a href="/meals" class="card-button">Order Now</a>
+            <a href="/orders" class="card-button">Order Now</a>
         </div>
 
         <!-- Card 3 -->
@@ -325,7 +273,7 @@ footer a:hover {
                     <p>Be part of the change. See how your contributions transform lives.</p>
                 </div>
             </div>
-            <a href="/impact" class="card-button">See Impact</a>
+            <a href="/about is" class="card-button">See Impact</a>
         </div>
     </div>
     </main>
