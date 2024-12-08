@@ -188,16 +188,7 @@
                     <a href="/orders" class="card-button">Order Now</a>
                 </div>
 
-                <div class="card">
-                    <h3>Delivery</h3>
-                    <div class="card-image">
-                        <img src="https://images.unsplash.com/photo-1496080174650-637e3f22fa03?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&q=80&w=800" alt="Delivery">
-                        <div class="card-hover-content">
-                            <p>Our dedicated team ensures timely delivery of meals every day.</p>
-                        </div>
-                    </div>
-                    <a href="/delivery" class="card-button">Track Delivery</a>
-                </div>
+               
 
                 <div class="card">
                     <h3>Donate</h3>
