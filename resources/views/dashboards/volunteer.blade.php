@@ -1,77 +1,97 @@
 <x-app-layout>
-    <!-- Volunteer Dashboard -->
-    <h1>Volunteer Dashboard</h1>
-    <p>Welcome to your dashboard, {{ Auth::user()->name }}!</p>
+    <div style="background-color: #032E8A; color: #ffffff; min-height: 100vh; padding: 2rem 0;">
+        <div style="max-width: 1200px; margin: 0 auto; padding: 0 1rem;">
+            <h1 style="font-size: 2.5rem; font-weight: bold; text-align: center; margin-bottom: 2rem; color: #FFD700;">
+                Volunteer Dashboard
+            </h1>
+            <p style="font-size: 1.25rem; text-align: center; margin-bottom: 2rem;">Welcome to your dashboard, {{ Auth::user()->name }}!</p>
 
-    <div class="container">
-        <h2>All Orders</h2>
+            <div style="background-color: rgba(255, 255, 255, 0.1); border-radius: 0.5rem; padding: 2rem; box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);">
+                <h2 style="font-size: 1.5rem; font-weight: bold; margin-bottom: 1rem; color: #FFD700;">All Orders</h2>
 
-        @if ($orders->isEmpty())
-            <p>No orders found.</p>
-        @else
-            <table class="table">
-                <thead>
-                    <tr>
-                        <th>Order Number</th>
-                        <th>User</th>
-                        <th>Meal</th>
-                        <th>Status</th>
-                        <th>Pickup Location</th>
-                        <th>Delivery Location</th>
-                        <th>User Phone</th>
-                        <th>Partner Name</th>
-                        <th>Partner Phone</th>
-                        <th>Action</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    @foreach ($orders as $order)
-                        <tr>
-                            <td>{{ $order->id }}</td>
-                            <td>{{ $order->user->name ?? 'N/A' }}</td>
-                            <td>{{ $order->meal->name ?? 'N/A' }}</td>
-                            <td>{{ $order->status }}</td>
-                            <td>{{ $order->pickup_location ?? 'N/A' }}</td>
-                            <td>{{ $order->delivery_location ?? 'N/A' }}</td>
-                            <td>{{ $order->user_phone ?? 'N/A' }}</td>
-                            <td>{{ $order->partner->name ?? 'N/A' }}</td>
-                            <td>{{ $order->partner_phone ?? 'N/A' }}</td>
-                            <td>
-                                @if ($order->status === 'Pending')
-                                    <form action="{{ route('orders.accept', $order->id) }}" method="POST" style="display: inline-block;">
-                                        @csrf
-                                        <button type="submit" class="btn btn-success">Accept Order</button>
-                                    </form>
-                                @elseif ($order->status === 'picking_up')
-                                    <form action="{{ route('orders.deliverToPartner', $order->id) }}" method="POST" style="display: inline-block;">
-                                        @csrf
-                                        <button type="submit" class="btn btn-primary">Deliver to Partner</button>
-                                    </form>
-                                @elseif ($order->status === 'delivering')
-                                    <form action="{{ route('orders.markDelivered', $order->id) }}" method="POST" style="display: inline-block;">
-                                        @csrf
-                                        <button type="submit" class="btn btn-warning">Mark as Delivered</button>
-                                    </form>
-                                @else
-                                    <button class="btn btn-secondary" disabled>Order Delivered</button>
-                                @endif
-                            </td>
-                        </tr>
-                        <tr>
-                            <td colspan="10">
-                                <!-- Map for this order -->
-                                <div id="map-{{ $order->id }}" style="width: 100%; height: 400px; margin-top: 10px;"></div>
-                                <div class="actions" style="margin-top: 10px;">
-                                    <button class="btn btn-primary" onclick="showPickupDirection({{ $order->id }}, '{{ $order->pickup_location }}')">Show Pickup Direction</button>
-                                    <button class="btn btn-success" onclick="showDeliveryDirection({{ $order->id }}, '{{ $order->delivery_location }}')">Show Delivery Direction</button>
-                                    <button class="btn btn-danger" onclick="clearMap({{ $order->id }})">Clear Map</button>
-                                </div>
-                            </td>
-                        </tr>
-                    @endforeach
-                </tbody>
-            </table>
-        @endif
+                @if ($orders->isEmpty())
+                    <p style="text-align: center;">No orders found.</p>
+                @else
+                    <div style="overflow-x: auto;">
+                        <table style="width: 100%; border-collapse: separate; border-spacing: 0;">
+                            <thead>
+                                <tr style="background-color: rgba(255, 255, 255, 0.2);">
+                                    <th style="padding: 0.75rem; text-align: left;">Order Number</th>
+                                    <th style="padding: 0.75rem; text-align: left;">User</th>
+                                    <th style="padding: 0.75rem; text-align: left;">Meal</th>
+                                    <th style="padding: 0.75rem; text-align: left;">Status</th>
+                                    <th style="padding: 0.75rem; text-align: left;">Pickup Location</th>
+                                    <th style="padding: 0.75rem; text-align: left;">Delivery Location</th>
+                                    <th style="padding: 0.75rem; text-align: left;">User Phone</th>
+                                    <th style="padding: 0.75rem; text-align: left;">Partner Name</th>
+                                    <th style="padding: 0.75rem; text-align: left;">Partner Phone</th>
+                                    <th style="padding: 0.75rem; text-align: left;">Action</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                @foreach ($orders as $order)
+                                    <tr style="border-bottom: 1px solid rgba(255, 255, 255, 0.2);">
+                                        <td style="padding: 0.75rem;">{{ $order->id }}</td>
+                                        <td style="padding: 0.75rem;">{{ $order->user->name ?? 'N/A' }}</td>
+                                        <td style="padding: 0.75rem;">{{ $order->meal->name ?? 'N/A' }}</td>
+                                        <td style="padding: 0.75rem;">{{ $order->status }}</td>
+                                        <td style="padding: 0.75rem;">{{ $order->pickup_location ?? 'N/A' }}</td>
+                                        <td style="padding: 0.75rem;">{{ $order->delivery_location ?? 'N/A' }}</td>
+                                        <td style="padding: 0.75rem;">{{ $order->user_phone ?? 'N/A' }}</td>
+                                        <td style="padding: 0.75rem;">{{ $order->partner->name ?? 'N/A' }}</td>
+                                        <td style="padding: 0.75rem;">{{ $order->partner_phone ?? 'N/A' }}</td>
+                                        <td style="padding: 0.75rem;">
+                                            @if ($order->status === 'Pending')
+                                                <form action="{{ route('orders.accept', $order->id) }}" method="POST" style="display: inline-block;">
+                                                    @csrf
+                                                    <button type="submit" style="background-color: #FF4500; color: white; padding: 0.5rem 1rem; border: none; border-radius: 0.25rem; cursor: pointer;">
+                                                        Accept Order
+                                                    </button>
+                                                </form>
+                                            @elseif ($order->status === 'picking_up')
+                                                <form action="{{ route('orders.deliverToPartner', $order->id) }}" method="POST" style="display: inline-block;">
+                                                    @csrf
+                                                    <button type="submit" style="background-color: #FF4500; color: white; padding: 0.5rem 1rem; border: none; border-radius: 0.25rem; cursor: pointer;">
+                                                        Deliver to Partner
+                                                    </button>
+                                                </form>
+                                            @elseif ($order->status === 'delivering')
+                                                <form action="{{ route('orders.markDelivered', $order->id) }}" method="POST" style="display: inline-block;">
+                                                    @csrf
+                                                    <button type="submit" style="background-color: #FF4500; color: white; padding: 0.5rem 1rem; border: none; border-radius: 0.25rem; cursor: pointer;">
+                                                        Mark as Delivered
+                                                    </button>
+                                                </form>
+                                            @else
+                                                <button style="background-color: #808080; color: white; padding: 0.5rem 1rem; border: none; border-radius: 0.25rem; opacity: 0.5; cursor: not-allowed;" disabled>
+                                                    Order Delivered
+                                                </button>
+                                            @endif
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td colspan="10" style="padding: 0.75rem;">
+                                            <div id="map-{{ $order->id }}" style="width: 100%; height: 400px; margin-top: 1rem;"></div>
+                                            <div style="margin-top: 1rem;">
+                                                <button onclick="showPickupDirection({{ $order->id }}, '{{ $order->pickup_location }}')" style="background-color: #FF4500; color: white; padding: 0.5rem 1rem; border: none; border-radius: 0.25rem; cursor: pointer; margin-right: 0.5rem;">
+                                                    Show Pickup Direction
+                                                </button>
+                                                <button onclick="showDeliveryDirection({{ $order->id }}, '{{ $order->delivery_location }}')" style="background-color: #FF4500; color: white; padding: 0.5rem 1rem; border: none; border-radius: 0.25rem; cursor: pointer; margin-right: 0.5rem;">
+                                                    Show Delivery Direction
+                                                </button>
+                                                <button onclick="clearMap({{ $order->id }})" style="background-color: #FF4500; color: white; padding: 0.5rem 1rem; border: none; border-radius: 0.25rem; cursor: pointer;">
+                                                    Clear Map
+                                                </button>
+                                            </div>
+                                        </td>
+                                    </tr>
+                                @endforeach
+                            </tbody>
+                        </table>
+                    </div>
+                @endif
+            </div>
+        </div>
     </div>
 
     <!-- Add Google Maps API Script -->
@@ -189,5 +209,11 @@
             }
         }
     </script>
-
+    <footer style="background-color: #032E8A; color: white; padding: 2rem; text-align: center;">
+    <p>&copy; 2024 Meals on Wheels. All rights reserved.</p>
+    <div>
+        <a href="/about" style="color: #FFD700; text-decoration: none; margin: 0 1rem;">About Us</a>
+        <a href="/contact" style="color: #FFD700; text-decoration: none; margin: 0 1rem;">Contact Us</a>
+    </div>
+</footer>
 </x-app-layout>
