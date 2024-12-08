@@ -198,7 +198,7 @@
                             <p>Your generous donations help us reach more people in need.</p>
                         </div>
                     </div>
-                    <a href="/donate" class="card-button">Donate Now</a>
+                    <a href="/donor" class="card-button">Donate Now</a>
                 </div>
 
                 <div class="card">
