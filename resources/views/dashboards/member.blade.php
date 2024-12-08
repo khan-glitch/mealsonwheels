@@ -4,13 +4,9 @@
             <h1 style="font-size: 3.5rem; font-weight: 800; text-align: center; margin-bottom: 2rem; color: #FFD700; text-shadow: 2px 2px 4px rgba(0,0,0,0.3);">My Orders</h1>
 
             @if ($orders->isEmpty())
-                <div style="background-color: rgba(255, 255, 255, 0.1); border-radius: 1rem; padding: 3rem; text-align: center; backdrop-filter: blur(10px); box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1);">
-                    <p style="font-size: 1.5rem; font-weight: 600; margin-bottom: 1.5rem; color: #ffffff;">You have not placed any orders yet.</p>
-                    <a href="{{ route('meals.index') }}" style="display: inline-block; background-color: #FFD700; color: #032E8A; padding: 0.75rem 2rem; border-radius: 2rem; font-weight: 600; text-decoration: none; transition: all 0.3s ease; box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);">
-                        Browse Meals
-                    </a>
-                </div>
+                <p class="text-center text-xl" style="color:white">You have not placed any orders yet.</p>
             @else
+          
                 <div style="display: grid; grid-template-columns: repeat(auto-fill, minmax(300px, 1fr)); gap: 2rem;">
                     @foreach ($orders as $order)
                         <div style="background-color: rgba(255, 255, 255, 0.1); border-radius: 1rem; overflow: hidden; backdrop-filter: blur(10px); box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1); transition: transform 0.3s ease, box-shadow 0.3s ease;" onmouseover="this.style.transform='translateY(-5px)'; this.style.boxShadow='0 12px 40px rgba(0, 0, 0, 0.2)';" onmouseout="this.style.transform='translateY(0)'; this.style.boxShadow='0 8px 32px rgba(0, 0, 0, 0.1)';">
@@ -90,4 +86,3 @@
         </div>
     </footer>
 </x-app-layout>
-

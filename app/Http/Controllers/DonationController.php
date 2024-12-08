@@ -4,7 +4,6 @@ namespace App\Http\Controllers;
 
 use App\Models\Donation;
 use Illuminate\Http\Request;
-use Illuminate\Support\Facades\Auth;
 
 class DonationController extends Controller
 {
@@ -21,7 +20,7 @@ class DonationController extends Controller
         return view('donor.payment', compact('method'));
     }
 
-        public function store(Request $request)
+    public function store(Request $request)
     {
         // Validate the input
         $request->validate([
@@ -56,5 +55,23 @@ class DonationController extends Controller
 
         // Pass the selected payment method to the view
         return view('donor.payment', compact('method'));
+    }
+
+    // New method for showing donations in the admin dashboard
+    public function showDonationsForAdmin()
+    {
+        // Fetch all donations ordered by latest
+        $donations = Donation::orderBy('donated_at', 'desc')->get();
+
+        // Calculate the total donations
+        $totalDonations = Donation::sum('amount');
+
+        // Fetch donations grouped by month
+        $donationsOverTime = Donation::selectRaw('MONTH(donated_at) as month, SUM(amount) as total')
+                                     ->groupBy('month')
+                                     ->get();
+
+        // Return the view for the admin donation page located in dashboards/donations.blade.php
+        return view('dashboards.adminDonations', compact('donations', 'totalDonations', 'donationsOverTime'));
     }
 }

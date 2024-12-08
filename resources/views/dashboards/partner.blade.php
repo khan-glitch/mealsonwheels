@@ -22,7 +22,7 @@
                 </div>
                 <div style="margin-bottom: 1rem;">
                     <label for="type" style="display: block; margin-bottom: 0.5rem;">Meal Type</label>
-                    <select name="type" id="type" required style="width: 100%; padding: 0.5rem; border-radius: 0.25rem; border: none; background-color: rgba(255, 255, 255, 0.2); color: white;">
+                    <select name="type" id="type" required style="width: 100%; padding: 0.5rem; border-radius: 0.25rem; border: none; background-color: rgba(0, 0, 0, 0.2); color: white;">
                         <option value="hot" {{ (isset($meal) && $meal->type === 'hot') ? 'selected' : '' }}>Hot</option>
                         <option value="frozen" {{ (isset($meal) && $meal->type === 'frozen') ? 'selected' : '' }}>Frozen</option>
                     </select>

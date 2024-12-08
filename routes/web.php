@@ -33,6 +33,8 @@ Route::middleware(['auth', 'verified'])->group(function () {
     Route::get('/caregiver/dashboard', [CaregiverDashboardController::class, 'index'])->name('caregiver.dashboard');
     Route::get('/volunteer/dashboard', [VolunteerDashboardController::class, 'index'])->name('volunteer.dashboard');
     Route::get('/admin/dashboard', [AdminDashboardController::class, 'index'])->name('admin.dashboard');
+    Route::get('/admin/volunteer', [AdminDashboardController::class, 'fetchOrder'])->name('admin.volunteers');
+    Route::get('/admin/donations', [DonationController::class, 'showDonationsForAdmin'])->name('admin.donations');
     Route::get('/partner/dashboard', [PartnerDashboardController::class, 'index'])->name('partner.dashboard');
 
     // CRUD operations for meals, handled within the partner dashboard
