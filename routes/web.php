@@ -9,7 +9,8 @@ use App\Http\Controllers\PartnerDashboardController;
 use App\Http\Controllers\AdminDashboardController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\OrderController;
-
+use App\Http\Controllers\ContactController;
+use App\Http\Controllers\PageController;
 // Welcome Page
 Route::get('/', function () {
     return view('welcome');
@@ -60,5 +61,21 @@ Route::middleware(['auth'])->group(function () {
     Route::post('/orders/{meal}', [OrderController::class, 'placeOrder'])->name('order.place'); // Order only if logged in
 });
 
+Route::delete('/orders/{order}', [OrderController::class, 'cancelOrder'])->name('orders.cancel')->middleware('auth');
+
+
+
+
+Route::middleware('auth')->prefix('volunteer')->group(function () {
+    Route::get('/dashboard', [VolunteerDashboardController::class, 'index'])->name('volunteer.dashboard');
+    Route::post('/orders/{orderId}/accept', [VolunteerDashboardController::class, 'acceptOrder'])->name('orders.accept');
+    Route::post('/orders/{orderId}/deliver', [VolunteerDashboardController::class, 'deliverToPartner'])->name('orders.deliverToPartner');
+    Route::post('/orders/{orderId}/delivered', [VolunteerDashboardController::class, 'markDelivered'])->name('orders.markDelivered');
+});
+
+
+Route::get('/contact', [ContactController::class, 'index'])->name('contact');
+
+Route::get('/about', [PageController::class, 'about'])->name('about');
 // Authentication Routes
 require __DIR__.'/auth.php';

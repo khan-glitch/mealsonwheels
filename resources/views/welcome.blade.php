@@ -4,10 +4,10 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Meals on Wheels</title>
-    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;700&display=swap" rel="stylesheet">
     <style>
         body {
-            font-family: "Roboto", sans-serif;
+            font-family: "Poppins", sans-serif;
             margin: 0;
             padding: 0;
             background-color: #032E8A;
@@ -224,13 +224,14 @@
         </div>
     </main>
 
-    <footer>
-        <p>&copy; {{ date('Y') }} Meals on Wheels. All rights reserved.</p>
-        <a href="#donor">Donor Page</a>
-        <a href="#terms">Terms of Service</a>
-        <a href="#privacy">Privacy Policy</a>
-        <a href="#careers">Careers</a>
-    </footer>
+   <!-- Footer Section -->
+   <footer style="background-color: #032E8A; color: white; padding: 2rem; text-align: center;">
+    <p>&copy; 2024 Meals on Wheels. All rights reserved.</p>
+    <div>
+        <a href="/about" style="color: #FFD700; text-decoration: none; margin: 0 1rem;">About Us</a>
+        <a href="/contact" style="color: #FFD700; text-decoration: none; margin: 0 1rem;">Contact Us</a>
+    </div>
+</footer>
 </body>
 </html>
 

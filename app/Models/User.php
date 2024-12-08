@@ -57,5 +57,9 @@ class User extends Authenticatable
 {
     return $this->hasMany(Order::class);
 }
-
+  // Define the relationship with the meals table
+  public function meals()
+  {
+      return $this->hasMany(Meal::class, 'partner_id');
+  }
 }
