@@ -112,5 +112,13 @@
         </div>
     </div>
 </div>
+ <!-- Footer Section -->
+ <footer style="background-color: #032E8A; color: white; padding: 2rem; text-align: center;">
+    <p>&copy; 2024 Meals on Wheels. All rights reserved.</p>
+    <div>
+        <a href="/about" style="color: #FFD700; text-decoration: none; margin: 0 1rem;">About Us</a>
+        <a href="/contact" style="color: #FFD700; text-decoration: none; margin: 0 1rem;">Contact Us</a>
+    </div>
+</footer>
 </x-app-layout>
 

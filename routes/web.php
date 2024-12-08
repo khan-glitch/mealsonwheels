@@ -79,3 +79,7 @@ Route::get('/contact', [ContactController::class, 'index'])->name('contact');
 Route::get('/about', [PageController::class, 'about'])->name('about');
 // Authentication Routes
 require __DIR__.'/auth.php';
+
+Route::get('/contact', [ContactController::class, 'index'])->name('contact');
+
+Route::get('/about', [PageController::class, 'about'])->name('about');
