@@ -7,7 +7,7 @@
 /storage/*.key
 /storage/logs/*.log" 
 
-3. Please reinstall composer by 'composer install' and npm modules by "npm install" in the terminal. After that, please reconfigure the database in env file and change the appname to "Happy Meals" in APPNAME. After that, a few reconfiguration will be need to done in the terminal one being "php artisan key:generate" as an example case. After that, configuration of API key in .env file will be needed, here is the api key - "GOOGLE_MAPS_API_KEY=AIzaSyCKFuBXU6h5HXfiLHmeWEhg6xLBABXsGVg"
+3. Please reinstall composer by 'composer install' and npm modules by "npm install" in the terminal. After that, please reconfigure the database in env file and change the appname to "Merry Meals" in APPNAME. After that, a few reconfiguration will be need to done in the terminal one being "php artisan key:generate" as an example case. After that, configuration of API key in .env file will be needed, here is the api key - "GOOGLE_MAPS_API_KEY=AIzaSyCKFuBXU6h5HXfiLHmeWEhg6xLBABXsGVg"
 
 4. Here are the APIs used -
  "Directions API
