@@ -9,7 +9,19 @@
 
 3. Please reinstall composer by 'composer install' and npm modules by "npm install" in the terminal. After that, please reconfigure the database in env file and change the appname to "Merry Meals" in APPNAME. After that, a few reconfiguration will be need to done in the terminal one being "php artisan key:generate" as an example case. After that, configuration of API key in .env file will be needed, here is the api key - "GOOGLE_MAPS_API_KEY=AIzaSyCKFuBXU6h5HXfiLHmeWEhg6xLBABXsGVg"
 
-4. Here are the APIs used -
+4. Cammands to run in the terminal before starting the project
+composer install
+npm install
+npm run build  
+Remove-Item -Path public\storage
+php artisan storage:link
+php artisan key:generate
+add .env file to the project (configure the database)
+php artisan serve 
+
+
+
+6. Here are the APIs used -
  "Directions API
 Distance Matrix API
 Geocoding API
