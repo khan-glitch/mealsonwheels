@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Meals on Wheels</title>
+    <title>Merry Meals</title>
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;700&display=swap" rel="stylesheet">
     <style>
         body {
@@ -188,7 +188,7 @@
                     <a href="/orders" class="card-button">Order Now</a>
                 </div>
 
-               
+
 
                 <div class="card">
                     <h3>Donate</h3>
@@ -198,7 +198,7 @@
                             <p>Your generous donations help us reach more people in need.</p>
                         </div>
                     </div>
-                    <a href="/donate" class="card-button">Donate Now</a>
+                    <a href="/donor" class="card-button">Donate Now</a>
                 </div>
 
                 <div class="card">

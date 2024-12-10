@@ -1,4 +1,11 @@
 <x-guest-layout>
+
+    <!-- Back to Home Button -->
+    <div class="mb-4">
+        <a href="{{ url('/') }}" class="inline-flex items-center px-4 py-2 bg-indigo-600 border border-transparent rounded-md font-semibold text-xs text-dark uppercase tracking-widest hover:bg-indigo-500 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2 transition ease-in-out duration-150">
+            {{ __('Back to Home') }}
+        </a>
+    </div>
     <form method="POST" action="{{ route('register') }}">
         @csrf
 
