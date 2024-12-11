@@ -1,7 +1,7 @@
 <x-app-layout>
     <div style="background: linear-gradient(135deg, #032E8A 0%, #0077BE 100%); min-height: 100vh; padding: 3rem 0;">
         <div style="max-width: 1200px; margin: 0 auto; padding: 0 2rem;">
-            <h1 style="font-size: 3.5rem; font-weight: 800; text-align: center; margin-bottom: 2rem; color: #FFD700; text-shadow: 2px 2px 4px rgba(0,0,0,0.3);">Donor Page</h1>
+            <h1 style="font-size: 3.5rem; font-weight: 800; text-align: center; margin-bottom: 2rem; color: #FFD700; text-shadow: 2px 2px 4px rgba(0,0,0,0.3);">Donation List</h1>
 
             {{-- Success Message --}}
             @if(session('success'))
